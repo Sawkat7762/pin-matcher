@@ -12,34 +12,34 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input class="form-control" type="text">
-                    <button class="generate-btn">Generate Pin</button>
+                    <input class="form-control" type="text" id="randomShow">
+                    <button class="generate-btn" onclick="PinGenerat()">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" id="display">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
-                              <div class="button">7</div>
-                              <div class="button">8</div>
-                              <div class="button">9</div>
+                              <div class="button"> <input type="button" value="7" onclick="NumShow('7')"> </div>
+                              <div class="button"><input type="button" value="8" onclick="NumShow('8')"></div>
+                              <div class="button"><input type="button" value="9" onclick="NumShow('9')"></div>
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">4</div>
-                              <div class="button">5</div>
-                              <div class="button">6</div>
+                              <div class="button"><input type="button" value="4" onclick="NumShow('4')"></div>
+                              <div class="button"><input type="button" value="5" onclick="NumShow('5')"></div>
+                              <div class="button"><input type="button" value="6" onclick="NumShow('6')"></div>
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">1</div>
-                              <div class="button">2</div>
-                              <div class="button">3</div>
+                              <div class="button"><input type="button" value="1" onclick="NumShow('1')"></div>
+                              <div class="button"><input type="button" value="2" onclick="NumShow('2')"></div>
+                              <div class="button"><input type="button" value="3" onclick="NumShow('3')"></div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button">&lt;</div>
-                                <div class="button">0</div>
-                                <div class="button">C</div>
+                                <div class="button"><input type="button" value="&lt;" onclick="dltOne()"></div>
+                                <div class="button"> <input type="button" value="0" onclick="NumShow('0')"></div>
+                                <div class="button"> <input type="button" value="C" onclick="dltall()"></div>
                             </div>
                             <div>
                                 <button type="submit" class="submit-btn">Submit</button>
@@ -50,9 +50,38 @@
             </div>
         </div>
         <div class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p class="notify" id="didnotmatch">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify" id="match">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
+    <script>
+        function PinGenerat(){
+            function getPin() {
+                const pin = Math.round(Math.random() * 10000);
+                 const pinString = pin + '';
+                 if (pinString.length == 4) {
+                     return pin;
+                 }
+                 else {
+         // console.log('got 3 digit and calling again', pin);
+                     return getPin();
+                 }
+            }
+            const pinshow = getPin();
+            document.getElementById("randomShow").value = pinshow;
+            
+        }
+        var didnotmatch =  document.getElementById("didnotmatch").style.display ="none";
+        var match = document.getElementById("match").style.display ="none"
+        function NumShow(Num){
+            document.getElementById("display").value += Num;
+        }
+        function dltall(){
+            document.getElementById("display").value = "";
+        }
+        function dltOne(){
+            document.getElementById("display").value = display.value.slice(0, -1) ;
+        }
+    </script>
 </body>
 </html>
