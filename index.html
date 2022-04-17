@@ -42,8 +42,8 @@
                                 <div class="button"> <input type="button" value="C" onclick="dltall()"></div>
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <button type="submit" id="submit-btn" onclick="submit()">Submit</button>
+                                <p id="action-left"> <a id="clicks">3</a> try left</p>
                             </div>
                     </div>
                 </div>
@@ -54,34 +54,6 @@
             <p class="notify" id="match">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
-    <script>
-        function PinGenerat(){
-            function getPin() {
-                const pin = Math.round(Math.random() * 10000);
-                 const pinString = pin + '';
-                 if (pinString.length == 4) {
-                     return pin;
-                 }
-                 else {
-         // console.log('got 3 digit and calling again', pin);
-                     return getPin();
-                 }
-            }
-            const pinshow = getPin();
-            document.getElementById("randomShow").value = pinshow;
-            
-        }
-        var didnotmatch =  document.getElementById("didnotmatch").style.display ="none";
-        var match = document.getElementById("match").style.display ="none"
-        function NumShow(Num){
-            document.getElementById("display").value += Num;
-        }
-        function dltall(){
-            document.getElementById("display").value = "";
-        }
-        function dltOne(){
-            document.getElementById("display").value = display.value.slice(0, -1) ;
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>

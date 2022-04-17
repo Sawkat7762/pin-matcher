@@ -86,7 +86,7 @@ cursor: pointer;
 .blink-me {
 color: #E0B612;
 }
-.submit-btn {
+#submit-btn {
     border: none;
     margin-top: 20px;
     padding: 10px 120px;
@@ -107,7 +107,7 @@ color: #E0B612;
     width: 35%;
     margin: 0 auto;
 }
-.action-left {
+#action-left {
     color: #FF3C5F;
     margin-top: 10px;
 }
